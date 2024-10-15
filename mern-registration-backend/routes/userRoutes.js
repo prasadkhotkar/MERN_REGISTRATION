@@ -1,4 +1,3 @@
-// routes/userRoutes.js
 const express = require('express');
 const {
     registerUser,
@@ -22,7 +21,7 @@ router.get('/user/:id', authMiddleware, getUserProfile);
 
 // Update user profile with profile picture upload
 router.put('/user/:id', authMiddleware, upload.single('profilePicture'), updateUserProfile);
-// Add this route for uploading profile pictures
+
 router.post('/upload', authMiddleware, upload.single('profilePicture'), (req, res) => {
     if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });
