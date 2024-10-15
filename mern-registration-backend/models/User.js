@@ -1,4 +1,3 @@
-// models/User.js
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
@@ -30,7 +29,7 @@ const userSchema = new mongoose.Schema(
             required: [true, 'Please enter your phone number'],
         },
         profilePicture: {
-            type: String, // URL to the profile picture
+            type: String, 
             default: '',
         },
     },
