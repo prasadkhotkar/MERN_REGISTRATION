@@ -1,4 +1,3 @@
-// controllers/userController.js
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -10,9 +9,7 @@ const generateToken = (id) => {
     });
 };
 
-// @desc    Register new user
-// @route   POST /api/register
-// @access  Public
+
 const registerUser = async (req, res) => {
     const { name, email, password, address, phoneNumber } = req.body;
     const profilePicture = req.file ? req.file.path : '';
@@ -56,9 +53,7 @@ const registerUser = async (req, res) => {
     }
 };
 
-// @desc    Authenticate user & get token
-// @route   POST /api/login
-// @access  Public
+
 const authUser = async (req, res) => {
     const { email, password } = req.body;
 
@@ -80,9 +75,6 @@ const authUser = async (req, res) => {
     }
 };
 
-// @desc    Get user profile
-// @route   GET /api/user/:id
-// @access  Private
 const getUserProfile = async (req, res) => {
     const user = await User.findById(req.params.id).select('-password');
 
@@ -92,10 +84,6 @@ const getUserProfile = async (req, res) => {
         res.status(404).json({ message: 'User not found' });
     }
 };
-
-// @desc    Update user profile
-// @route   PUT /api/user/:id
-// @access  Private
 const updateUserProfile = async (req, res) => {
     const { name, email, address, phoneNumber } = req.body;
     const profilePicture = req.file ? req.file.path : req.user.profilePicture;
