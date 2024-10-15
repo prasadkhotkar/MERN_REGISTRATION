@@ -1,4 +1,3 @@
-// src/context/AuthContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
 import API from '../services/api';
 
@@ -7,7 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // Load user from localStorage if token exists
+  
   useEffect(() => {
     const loadUser = async () => {
       const token = localStorage.getItem('token');
